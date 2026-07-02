@@ -28,7 +28,7 @@ if __name__=='__main__':
     relevances = relevances[toretain,:K]
     features = features[toretain,:K,:]
     features = np.nan_to_num(features)
-    docsPerQuery = K*np.ones(len(toretain),dtype=np.int)
+    docsPerQuery = K*np.ones(len(toretain),dtype=int)
     numQueries = len(docsPerQuery)    
     num_trees = 50
     num_samples = 200

@@ -110,7 +110,7 @@ class SemibanditSim(BanditSim):
         for i in range(self.X):
             self.contexts.append(Context.Context(i, np.zeros((1,1)), self.K, self.L))
         ## Initialize the policies.
-        piMat = np.zeros((N,X,L), dtype=np.int)
+        piMat = np.zeros((N,X,L), dtype=int)
         for n in range(N):
             for x in range(X):
                 piMat[n,x,:] = np.random.choice(range(K), L, replace=False)
@@ -148,7 +148,7 @@ class OrderedSBSim(SemibanditSim):
         self.contexts = []
         for i in range(self.X):
             self.contexts.append(Context.Context(i,np.zeros((1,1)), self.K, self.L))
-        piMat = np.zeros((N,X,L), dtype=np.int)
+        piMat = np.zeros((N,X,L), dtype=int)
         for n in range(N):
             for x in range(X):
                 piMat[n,x,:] = np.random.choice(range(K), L, replace=False)
@@ -230,7 +230,7 @@ class MQBandit(SemibanditSim):
         self.relevances = self.relevances[:,:np.min(self.docsPerQuery)]
         self.features = self.features[:,:np.min(self.docsPerQuery),:]
         self.docsPerQuery = np.min(self.docsPerQuery)*np.ones(len(self.docsPerQuery))
-        self.docsPerQuery = np.array(self.docsPerQuery, dtype=np.int)
+        self.docsPerQuery = np.array(self.docsPerQuery, dtype=int)
 
     def loadMQ2007(self):
         npFile = np.load("MQ2007.npz")
@@ -247,7 +247,7 @@ class MQBandit(SemibanditSim):
         self.relevances = self.relevances[:,:np.min(self.docsPerQuery)]
         self.features = self.features[:,:np.min(self.docsPerQuery),:]
         self.docsPerQuery = np.min(self.docsPerQuery)*np.ones(len(self.docsPerQuery))
-        self.docsPerQuery = np.array(self.docsPerQuery, dtype=np.int)
+        self.docsPerQuery = np.array(self.docsPerQuery, dtype=int)
 
     def get_new_context(self):
         context_idx = np.random.randint(0, self.X)
@@ -586,7 +586,7 @@ class SemiSynthBandit(OrderedSBSim):
 
         self.N = N
         tmp_policies = self.build_policies(N)
-        piMat = np.zeros((N,self.X,self.L),dtype=np.int)
+        piMat = np.zeros((N,self.X,self.L),dtype=int)
         for n in range(N):
             for x in range(self.X):
                 act = tmp_policies[n].get_action(self.data.get_context(x))

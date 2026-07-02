@@ -27,7 +27,7 @@ class MQ2008ContextIterator(object):
         toretain = np.where(self.docsPerQuery >= self.K)[0]
         self.relevances = self.relevances[toretain,:self.K]
         self.features = self.features[toretain,:self.K,:]
-        self.docsPerQuery = self.K*np.ones(len(toretain),dtype=np.int)
+        self.docsPerQuery = self.K*np.ones(len(toretain),dtype=int)
 
         self.curr_idx = 0
         self.has_ldf = True
@@ -62,7 +62,7 @@ class MQ2008ValContextIterator(object):
         toretain = np.where(self.docsPerQuery >= self.K)[0]
         self.relevances = self.relevances[toretain,:self.K]
         self.features = self.features[toretain,:self.K,:]
-        self.docsPerQuery = self.K*np.ones(len(toretain),dtype=np.int)
+        self.docsPerQuery = self.K*np.ones(len(toretain),dtype=int)
 
         self.curr_idx = 0
         self.has_ldf = True
@@ -96,7 +96,7 @@ class MQ2007ContextIterator(object):
         toretain = np.where(self.docsPerQuery >= self.K)[0]
         self.relevances = self.relevances[toretain,:self.K]
         self.features = self.features[toretain,:self.K,:]
-        self.docsPerQuery = self.K*np.ones(len(toretain),dtype=np.int)
+        self.docsPerQuery = self.K*np.ones(len(toretain),dtype=int)
         self.X = len(self.docsPerQuery)
 
         self.curr_idx = 0
@@ -144,7 +144,7 @@ class MQ2007ValContextIterator(object):
         toretain = np.where(self.docsPerQuery >= self.K)[0]
         self.relevances = self.relevances[toretain,:self.K]
         self.features = self.features[toretain,:self.K,:]
-        self.docsPerQuery = self.K*np.ones(len(toretain),dtype=np.int)
+        self.docsPerQuery = self.K*np.ones(len(toretain),dtype=int)
         self.X = len(self.docsPerQuery)
 
         self.curr_idx = 0
@@ -193,7 +193,7 @@ class YahooContextIterator(object):
         toretain = np.where(self.docsPerQuery >= self.K)[0]
         self.relevances = self.relevances[toretain,:self.K]
         self.features = self.features[toretain,:self.K,:]
-        self.docsPerQuery = self.K*np.ones(len(toretain),dtype=np.int)
+        self.docsPerQuery = self.K*np.ones(len(toretain),dtype=int)
         self.X = len(self.docsPerQuery)
 
         self.order = np.random.permutation(self.X)
